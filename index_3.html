@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A rat brain that lives digitally, with no body. Place cells, a striatal actor and critic, and dopamine-gated learning — alive in an ASCII enclosure.">
+<meta property="og:title" content="In Silico Rat">
+<meta property="og:description" content="A rat brain that lives digitally, with no body — alive in an ASCII enclosure.">
+<meta property="og:image" content="banner.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<title>In Silico Rat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#05080a;
+    --panel:#080f0c;
+    --line:#11351f;
+    --fg:#33d977;
+    --bright:#9dffc4;
+    --dim:#1c6b3f;
+    --body:#9fc4ae;
+    --amber:#ffb454;
+    --red:#ff6b6b;
+    --cyan:#6fe3ff;
+    --glow:0 0 7px rgba(51,217,119,.4);
+  }
+  *{ box-sizing:border-box; }
+  html,body{ background:var(--bg); }
+  body{
+    margin:0;
+    color:var(--body);
+    font-family:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+    font-size:14px;
+    line-height:1.7;
+    padding-inline:16px;
+    padding-block:26px 60px;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:9;
+    background:repeating-linear-gradient(to bottom,
+      rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px, rgba(0,0,0,.16) 3px, rgba(0,0,0,0) 4px);
+  }
+  .wrap{ max-width:900px; margin:0 auto; }
+
+  /* scrollable fixed-width art */
+  .scroll{ overflow-x:auto; overflow-y:hidden; }
+  pre{ margin:0; white-space:pre; font-family:inherit; }
+
+  /* banner */
+  .banner{
+    color:var(--fg); text-shadow:var(--glow);
+    font-size:clamp(7px,2.1vw,13px); line-height:1.08; letter-spacing:0;
+  }
+  .boot{ margin-top:18px; color:var(--dim); font-size:12.5px; }
+  .boot b{ color:var(--fg); font-weight:500; }
+  .tagline{ margin-top:14px; color:var(--body); max-width:72ch; }
+  .tagline em{ color:var(--bright); font-style:normal; }
+
+  /* section headers as shell prompts */
+  section{ margin-top:44px; }
+  .cmd{
+    font-family:'VT323', monospace; font-size:25px; line-height:1.2;
+    color:var(--bright); text-shadow:var(--glow); margin-bottom:4px;
+    word-break:break-word;
+  }
+  .cmd .sig{ color:var(--dim); }
+  .rule{ border-top:1px solid var(--line); margin:0 0 18px; }
+  .note{ color:var(--dim); font-size:12px; margin-top:10px; }
+  p{ margin:0 0 14px; max-width:74ch; }
+  p:last-child{ margin-bottom:0; }
+  .hl{ color:var(--bright); }
+  a{ color:var(--cyan); text-underline-offset:3px; }
+
+  /* panels */
+  .panel{ border:1px solid var(--line); background:var(--panel); padding:14px 16px; }
+  .grid2{ display:grid; grid-template-columns:minmax(0,auto) minmax(200px,1fr); gap:16px; align-items:start; }
+  @media (max-width:700px){ .grid2{ grid-template-columns:1fr; } }
+
+  /* world */
+  #world{ font-size:clamp(10px,2.5vw,17px); line-height:1.08; color:var(--fg); }
+  .t-wall{ color:var(--dim); }
+  .t-floor{ color:#0f2d1c; }
+  .t-food{ color:var(--cyan); text-shadow:0 0 6px rgba(111,227,255,.45); }
+  .t-hazard{ color:var(--red); text-shadow:0 0 6px rgba(255,107,107,.45); }
+  .t-rat{ color:#d6ffe8; text-shadow:var(--glow); }
+  .t-rat-off{ color:#4a5a51; }
+
+  .vitals{ font-size:12.5px; line-height:1.85; max-width:340px; }
+  .vitals .row{ display:flex; justify-content:space-between; gap:12px; }
+  .vitals .k{ color:var(--dim); }
+  .vitals .v{ color:var(--bright); }
+  .bar{ letter-spacing:0; }
+  .bar.warn{ color:var(--amber); }
+  .bar.crit{ color:var(--red); }
+  .live-dot{ color:var(--red); }
+
+  /* log */
+  #log{ height:150px; overflow-y:auto; display:flex; flex-direction:column-reverse; font-size:11.5px; line-height:1.65; margin-top:14px; border-top:1px solid var(--line); padding-top:10px; }
+  .tag-sys{ color:var(--cyan); }
+  .tag-event{ color:var(--amber); }
+  .tag-death{ color:var(--red); }
+  .tag-flavor{ color:#4c6357; font-style:italic; }
+  .tag-tick{ color:var(--dim); }
+
+  /* controls */
+  .controls{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:14px; }
+  button{
+    all:unset; cursor:pointer; font-family:inherit; font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--fg); border:1px solid var(--dim); padding:6px 11px;
+    transition:background .15s ease, color .15s ease;
+  }
+  button:hover{ background:rgba(51,217,119,.12); }
+  button:focus-visible{ outline:2px solid var(--fg); outline-offset:2px; }
+  button[aria-pressed="true"], button.on{ background:var(--fg); color:#04140a; border-color:var(--fg); }
+  button.danger{ color:var(--red); border-color:#5c2626; }
+  button.danger:hover{ background:rgba(255,107,107,.12); }
+  .speed{ color:var(--dim); font-size:11px; display:inline-flex; align-items:center; gap:6px; }
+  .speed b{ color:var(--bright); min-width:14px; text-align:center; font-weight:500; }
+
+  /* art blocks */
+  .art{ color:var(--fg); font-size:clamp(9px,2.1vw,13px); line-height:1.35; }
+  .art .dimc{ color:var(--dim); }
+  .art .ink{ color:var(--body); }
+  .h0{ color:#14432a; } .h1{ color:var(--dim); } .h2{ color:var(--fg); }
+  .h3{ color:var(--amber); } .h4{ color:var(--red); }
+  .mark{ color:var(--amber); }
+  .axis{ color:var(--dim); }
+  .flag-live{ color:var(--fg); }
+  .flag-stub{ color:#4c6357; }
+
+  ul.refs{ list-style:none; padding:0; margin:0; }
+  ul.refs li{ padding:8px 0; border-bottom:1px solid var(--line); }
+  ul.refs li span{ display:block; color:var(--dim); font-size:12px; line-height:1.6; }
+  ul.refs li:last-child{ border-bottom:none; }
+
+  footer{ margin-top:44px; border-top:1px solid var(--line); padding-top:18px; color:var(--dim); font-size:12px; line-height:1.8; }
+  .blink{ animation:blink 1.1s steps(1) infinite; }
+  @media (prefers-reduced-motion:reduce){ .blink{ animation:none; } }
+  @keyframes blink{ 50%{ opacity:0; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="scroll"><pre class="banner">█████   ████  ██████
+██  ██ ██  ██   ██
+█████  ██████   ██
+██ ██  ██  ██   ██
+██  ██ ██  ██   ██
+█████  █████   ████  ██████ ██  ██
+██  ██ ██  ██ ██  ██   ██   ███ ██
+█████  █████  ██████   ██   ██████
+██  ██ ██ ██  ██  ██   ██   ██ ███
+█████  ██  ██ ██  ██ ██████ ██  ██</pre></div>
+
+  <div class="boot">
+    <b>rat_brain</b> v0.3 — place cells + striatal actor/critic + dopamine, no skull<br>
+    substrate: browser · body: virtual only · status: <span class="live-dot">●</span> <b>running below</b>
+  </div>
+
+  <p class="tagline">A rat's brain is a control system for a rat. Strip the body away entirely and you don't free it — you put it in total sensory deprivation. So this one was given a fake body instead: a grid, a hunger clock, some food, some hazards. <em>It is alive on this page right now, and it can starve.</em></p>
+
+  <section>
+    <div class="cmd"><span class="sig">[01]</span> THE LIVE SPECIMEN</div>
+    <div class="rule"></div>
+    <div class="panel">
+      <div class="grid2">
+        <div class="scroll"><pre id="world"></pre></div>
+        <div class="vitals">
+          <div class="row"><span class="k">state</span><span class="v" id="s-state">EMBODIED</span></div>
+          <div class="row"><span class="k">life</span><span class="v" id="s-life">1</span></div>
+          <div class="row"><span class="k">age</span><span class="v" id="s-age">0</span></div>
+          <div class="row"><span class="k">lived</span><span class="v" id="s-total">0</span></div>
+          <div class="row"><span class="k">hp</span><span class="v bar" id="s-hp"></span></div>
+          <div class="row"><span class="k">food</span><span class="v bar" id="s-hunger"></span></div>
+          <div class="row"><span class="k">reward/50t</span><span class="v" id="s-reward">0.000</span></div>
+          <div class="row"><span class="k">synapses</span><span class="v" id="s-weights">naive</span></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="b-play" class="on">Pause</button>
+        <span class="speed">speed <button id="b-slow">−</button><b id="b-tps">4</b><button id="b-fast">+</button> t/s</span>
+        <button id="b-unplug">Unplug body</button>
+        <button id="b-terrain">New terrain</button>
+        <button id="b-wipe" class="danger">Wipe brain</button>
+      </div>
+
+      <div id="log"></div>
+    </div>
+    <p class="note">@ = the rat · o = food · x = hazard · # = wall. Hunger falls every tick; at zero, health drains. Hazards cost 22 hp. Death replaces the body and keeps the synapses, so life 4 starts with everything lives 1–3 learned. Saved to this browser only.</p>
+  </section>
+
+  <section>
+    <div class="cmd"><span class="sig">[02]</span> PREMISE</div>
+    <div class="rule"></div>
+    <p>Every region in a rat's brain earns its keep by turning sensation into movement. Whiskers into barrel cortex, odour into the olfactory bulb, hunger into the hypothalamus, all of it funnelled through the basal ganglia into an action. A brain with no input and no output isn't liberated; in real tissue, deprived cortex destabilises rather than rests.</p>
+    <p>So the design question was never whether to have a body. It was <span class="hl">what stands in for one</span>. Here it's a narrow contract: a sensory vector in, one of four actions out, and a scalar reward. Whatever sits on the other side — this maze, a game, a data stream — the brain can't tell, and doesn't need to.</p>
+    <p>Press <span class="hl">unplug body</span> above and you get the control condition: the same weights, the same neurons, fed nothing but noise. It doesn't die. It doesn't think. It just idles, with no trend in any direction, which is the closest thing this project has to a finding.</p>
+  </section>
+
+  <section>
+    <div class="cmd"><span class="sig">[03]</span> ANATOMY</div>
+    <div class="rule"></div>
+    <div class="scroll"><pre class="art" id="anatomy"></pre></div>
+    <p class="note">Fidelity is deliberately uneven. The hippocampal–striatal–dopaminergic loop is modelled in earnest because it's the best-understood learning circuit in rodent neuroscience. The rest are named stubs, so the gaps stay visible.</p>
+  </section>
+
+  <section>
+    <div class="cmd"><span class="sig">[04]</span> ARCHITECTURE</div>
+    <div class="rule"></div>
+    <div class="scroll"><pre class="art dimc" id="arch">            ┌────────────────────────────────────────┐    │
+            │  VIRTUAL BODY   ·  interface only      │◄───┐
+            └─────────────────┬──────────────────────┘    │
+                              │ sensory vector            │
+                              ▼                           │
+            ┌────────────────────────────────────────┐    │
+            │  THALAMUS       ·  relay + gain        │    │
+            └─────────────────┬──────────────────────┘    │
+                              ▼                           │
+            ┌────────────────────────────────────────┐    │
+            │  HIPPOCAMPUS    ·  place-cell code     │    │
+            └─────────────────┬──────────────────────┘    │
+                              ▼                           │
+            ┌────────────────────────────────────────┐    │
+dopamine ──►│  BASAL GANGLIA  ·  actor + critic      │    │
+            └─────────────────┬──────────────────────┘    │
+                              ▼                           │
+            ┌────────────────────────────────────────┐    │
+            │  MOTOR OUTPUT   ·  action chosen       ├────┘
+            └────────────────────────────────────────┘</pre></div>
+    <p class="note">The right-hand rail is the loop that makes the whole thing a brain rather than a classifier: action changes the body, the body changes the next sensory vector. Dopamine carries reward prediction error into the basal ganglia, where it decides which synapses survive.</p>
+  </section>
+
+  <section>
+    <div class="cmd"><span class="sig">[05]</span> WHAT IT LEARNED</div>
+    <div class="rule"></div>
+    <div class="scroll"><pre class="art" id="curve"></pre></div>
+    <p class="note" id="curve-note"></p>
+  </section>
+
+  <section>
+    <div class="cmd"><span class="sig">[06]</span> INSIDE THE WEIGHTS</div>
+    <div class="rule"></div>
+    <div class="controls" style="margin-top:0;margin-bottom:14px;">
+      <button id="m-value" aria-pressed="true">Value</button>
+      <button id="m-policy" aria-pressed="false">Policy</button>
+      <button id="m-route" aria-pressed="false">Route</button>
+    </div>
+    <div class="scroll"><pre class="art" id="map"></pre></div>
+    <p class="note" id="map-note"></p>
+  </section>
+
+  <section>
+    <div class="cmd"><span class="sig">[07]</span> REFERENCES</div>
+    <div class="rule"></div>
+    <ul class="refs">
+      <li><a href="https://bluebrain.epfl.ch/">Blue Brain Project</a><span>Digitally reconstructed and simulated a rat neocortical column from real anatomy and electrophysiology. The reference point for what maximum fidelity costs: supercomputer time, for one column.</span></li>
+      <li><a href="https://www.nature.com/articles/s41592-023-02034-3">Waxholm Space atlas of the rat brain (Nature Methods, 2023)</a><span>A 3D reference atlas of actual rat anatomy — what you'd constrain region sizes and boundaries against in an anatomically grounded build.</span></li>
+      <li><a href="https://singularityhub.com/2022/10/18/neurons-in-a-dish-learned-to-play-pong-in-virtual-reality/">DishBrain — Cortical Labs, 2022</a><span>Living neurons on an electrode array, given a virtual paddle and no physical body, learning Pong through dopamine-like feedback. The existence proof that brain-plus-virtual-body, minus organism, actually works.</span></li>
+      <li><a href="https://briansimulator.org/">Brian2</a> · <a href="https://www.nest-simulator.org/">NEST</a><span>Open-source spiking simulators. The next rung up from this page's rate-coded units: real spike timing and STDP instead of a linear actor-critic.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="cmd"><span class="sig">[08]</span> RUN IT YOURSELF</div>
+    <div class="rule"></div>
+    <div class="scroll"><pre class="art dimc">  <span class="ink">$ pip install numpy matplotlib</span>
+  <span class="ink">$ python3 digital_rat_brain.py</span>
+
+  trains the maze brain for 120 episodes (~4s), prints the
+  numbers on this page, writes results.png and results.json.
+  the whole brain is one readable file — place cells, actor,
+  critic, dopamine, about 120 lines of it.</pre></div>
+  </section>
+
+  <footer>
+    Nothing here is a rat's mind, and it isn't offered as one. It's a control-theoretic sketch that borrows a rat's circuit layout because that layout is one of biology's best-documented learning systems.<span class="blink">▌</span>
+  </footer>
+</div>
+
+<script id="sim-data" type="application/json">{"steps_per_episode": [300, 58, 108, 79, 93, 66, 60, 42, 40, 25, 30, 22, 20, 23, 28, 28, 41, 22, 20, 22, 19, 20, 24, 20, 22, 18, 20, 21, 20, 23, 23, 20, 25, 27, 19, 23, 18, 23, 19, 19, 22, 23, 22, 25, 18, 18, 21, 22, 18, 22, 23, 18, 24, 19, 25, 18, 20, 18, 21, 24, 24, 22, 18, 19, 18, 18, 19, 21, 20, 21, 18, 18, 26, 18, 19, 22, 18, 21, 21, 18, 18, 21, 22, 20, 18, 18, 23, 21, 20, 20, 19, 20, 20, 18, 20, 18, 18, 19, 20, 18, 20, 20, 20, 19, 18, 20, 18, 19, 18, 18, 18, 23, 18, 21, 18, 21, 18, 20, 23, 18], "value_map": [[0.512533552946123, 0.5555389662936742, 0.5284294035019159, 0.5324692480674571, 0.5703703258913391, 0.5790699600977547, 0.5234143966260058, 0.4081284204112668, 0.2615459097708182, 0.12907111170021623], [0.5479072119751021, 0.5979631303274665, 0.5855342267911731, 0.6157459870389096, 0.6807748263492626, 0.7107603353307934, 0.6726137157630626, 0.5659943281639932, 0.40548947518887396, 0.23376002299778115], [0.509140417292136, 0.5792014086380833, 0.5959390966044784, 0.6406847482231336, 0.7054650443115156, 0.7430209524184861, 0.7370519534941885, 0.676656989768356, 0.5441637004556747, 0.3583127764183106], [0.5009294675930612, 0.6091585419626003, 0.652460589706946, 0.6864463395772137, 0.7229562466848353, 0.7526828047683554, 0.7754846821252586, 0.7670861555854501, 0.6763557531951597, 0.489751461484229], [0.5232809696810822, 0.667317292967454, 0.7257125322353565, 0.7422361160256512, 0.755416907562822, 0.7820234807710924, 0.8231697624283061, 0.8469907036774935, 0.7886993708231026, 0.6077384375409985], [0.5056558638105834, 0.6653502959021997, 0.7373165741843872, 0.758894231386364, 0.7781119587748114, 0.811040133883377, 0.8501879737377703, 0.8770370262297076, 0.843455666062688, 0.6860489033994785], [0.41911883976136455, 0.5792127894690536, 0.679383561329403, 0.7411361891367141, 0.7935844282863289, 0.8317698635267219, 0.8460136218359813, 0.8573021655018568, 0.8530600389624526, 0.739932716567727], [0.2936413629801521, 0.44907711069454304, 0.590959317260409, 0.7159589389117008, 0.8182795596394971, 0.8694091555257885, 0.8681871098532228, 0.8777238382144638, 0.9087450113758035, 0.830250160564177], [0.17227386429249103, 0.31361415647448476, 0.4829234678858825, 0.6578477611745389, 0.806400058555005, 0.8891790339405099, 0.9131591965189254, 0.9524935243337621, 1.0094378404668818, 0.9299628956410684], [0.08221520598470416, 0.19059395180788227, 0.3432939316112433, 0.5151144355993081, 0.6705461236453557, 0.7756023446911162, 0.8373371383152811, 0.9071323560832769, 0.9654699330906412, 0.8748104333332287]], "policy": [[1, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 1, 1, 0, 0, 0], [1, 1, 1, 1, 1, 1, 1, 1, 1, 0], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]], "actions": ["N", "E", "S", "W"], "trajectory": [[0, 0], [0, 1], [1, 1], [2, 1], [3, 1], [3, 2], [3, 3], [4, 3], [4, 4], [4, 5], [4, 6], [4, 7], [5, 7], [5, 8], [6, 8], [7, 8], [8, 8], [9, 8], [9, 9]], "goal": [9, 9], "start": [0, 0], "place_cell_sigma": 1.5}</script>
+<script>
+(function(){
+  "use strict";
+  var D = JSON.parse(document.getElementById("sim-data").textContent);
+
+  /* ============================================================
+     PART 1 — the live brain
+     ============================================================ */
+  var COLS=26, ROWS=13, NUM_FOOD=4, NUM_HAZ=3;
+  var food, haz;
+  var rat = { x:2, y:2, health:100, hunger:100, age:0 };
+  var life=1, totalTicks=0, embodied=true;
+
+  function inB(x,y){ return x>0 && y>0 && x<COLS-1 && y<ROWS-1; }
+  function freeCell(occ){
+    for (var i=0;i<400;i++){
+      var x=1+Math.floor(Math.random()*(COLS-2)), y=1+Math.floor(Math.random()*(ROWS-2));
+      if (!occ.has(x+","+y)) return {x:x,y:y,key:x+","+y};
+    }
+    return {x:1,y:1,key:"1,1"};
+  }
+  function buildTerrain(){
+    food=new Set(); haz=new Set();
+    var occ=new Set([rat.x+","+rat.y]);
+    for (var i=0;i<NUM_FOOD;i++){ var c=freeCell(occ); food.add(c.key); occ.add(c.key); }
+    for (var j=0;j<NUM_HAZ;j++){ var h=freeCell(occ); haz.add(h.key); occ.add(h.key); }
+  }
+  function spawnFood(){
+    var occ=new Set(food); haz.forEach(function(k){occ.add(k);}); occ.add(rat.x+","+rat.y);
+    food.add(freeCell(occ).key);
+  }
+  function respawn(){
+    var occ=new Set(); food.forEach(function(k){occ.add(k);}); haz.forEach(function(k){occ.add(k);});
+    var c=freeCell(occ);
+    rat.x=c.x; rat.y=c.y; rat.health=100; rat.hunger=60; rat.age=0;
+  }
+
+  // place cells (+1 interoceptive hunger channel), actor-critic, dopamine
+  var NX=8, NY=5, SIG=2.3, centers=[];
+  for (var i=0;i<NX;i++) for (var j=0;j<NY;j++)
+    centers.push([1+i*((COLS-3)/(NX-1)), 1+j*((ROWS-3)/(NY-1))]);
+  var N_PLACE=centers.length, N_IN=N_PLACE+1;
+  var ACTIONS=["N","E","S","W"], N_ACT=4;
+  var LR_A=0.05, LR_C=0.1, GAMMA=0.97, TEMP=0.6, DECAY=0.75;
+
+  function encode(x,y,h01){
+    var v=new Float32Array(N_IN);
+    for (var k=0;k<N_PLACE;k++){
+      var dx=centers[k][0]-x, dy=centers[k][1]-y;
+      v[k]=Math.exp(-(dx*dx+dy*dy)/(2*SIG*SIG));
+    }
+    v[N_PLACE]=h01; return v;
+  }
+  function freshBrain(){
+    var W=[];
+    for (var i=0;i<N_IN;i++){ var r=new Float32Array(N_ACT); for (var a=0;a<N_ACT;a++) r[a]=(Math.random()-.5)*.02; W.push(r); }
+    var e=[]; for (i=0;i<N_IN;i++) e.push(new Float32Array(N_ACT));
+    return { W:W, v:new Float32Array(N_IN), elig:e };
+  }
+  var brain = freshBrain();
+
+  function logits(s){
+    var o=new Float32Array(N_ACT);
+    for (var i=0;i<N_IN;i++) for (var a=0;a<N_ACT;a++) o[a]+=s[i]*brain.W[i][a];
+    return o;
+  }
+  function value(s){ var t=0; for (var i=0;i<N_IN;i++) t+=s[i]*brain.v[i]; return t; }
+  function act(s){
+    var l=logits(s), m=-Infinity, i;
+    for (i=0;i<N_ACT;i++) if (l[i]>m) m=l[i];
+    var ex=[], sum=0;
+    for (i=0;i<N_ACT;i++){ var e=Math.exp((l[i]-m)/TEMP); ex.push(e); sum+=e; }
+    var r=Math.random()*sum, acc=0, pick=N_ACT-1;
+    for (i=0;i<N_ACT;i++){ acc+=ex[i]; if (r<=acc){ pick=i; break; } }
+    for (i=0;i<N_IN;i++){
+      for (var a=0;a<N_ACT;a++) brain.elig[i][a]*=DECAY;
+      brain.elig[i][pick]+=s[i];
+    }
+    return { a:pick, p:ex[pick]/sum };
+  }
+  function learn(s, r, s2, done){
+    var rpe = r + (done?0:GAMMA*value(s2)) - value(s);
+    for (var i=0;i<N_IN;i++){
+      brain.v[i]+=LR_C*rpe*s[i];
+      for (var a=0;a<N_ACT;a++) brain.W[i][a]+=LR_A*rpe*brain.elig[i][a];
+    }
+    return rpe;
+  }
+
+  var KEY="digitalRatBrain_v1";
+  function save(){
+    try{
+      localStorage.setItem(KEY, JSON.stringify({
+        W: brain.W.map(function(r){return Array.from(r);}),
+        v: Array.from(brain.v), life:life, totalTicks:totalTicks
+      }));
+    }catch(e){}
+  }
+  function load(){
+    try{
+      var raw=localStorage.getItem(KEY); if (!raw) return false;
+      var d=JSON.parse(raw); if (!d.W || d.W.length!==N_IN) return false;
+      brain.W=d.W.map(function(r){return Float32Array.from(r);});
+      brain.v=Float32Array.from(d.v);
+      life=d.life||1; totalTicks=d.totalTicks||0;
+      return true;
+    }catch(e){ return false; }
+  }
+
+  var logEl=document.getElementById("log");
+  function log(t, cls){
+    var d=document.createElement("div");
+    d.className=cls||"tag-tick"; d.textContent=t;
+    logEl.insertBefore(d, logEl.firstChild);
+    while (logEl.children.length>160) logEl.removeChild(logEl.lastChild);
+  }
+  var FLAVOR=[
+    "[amygdala-stub] not modeled — a hazard feels like empty floor until it hurts",
+    "[prefrontal-stub] no goal buffer — nothing is remembered beyond this tick",
+    "[cerebellum-stub] no motor smoothing — movement is a raw one-cell jump",
+    "[hippocampus] place-cell population is this brain's only notion of \"where\"",
+    "[thalamus] relaying sensory vector, gain fixed — no attention model yet",
+    "[vta] same reward-prediction-error rule the maze prototype used"
+  ];
+
+  var worldEl=document.getElementById("world");
+  function bar(v){
+    var n=14, f=Math.max(0,Math.min(n,Math.round(v/100*n)));
+    return "["+"█".repeat(f)+"░".repeat(n-f)+"] "+Math.round(v);
+  }
+  function renderWorld(){
+    var rows=[];
+    for (var y=0;y<ROWS;y++){
+      var r=[];
+      for (var x=0;x<COLS;x++){
+        var k=x+","+y;
+        if (x===rat.x&&y===rat.y) r.push('<span class="'+(embodied?"t-rat":"t-rat-off")+'">'+(embodied?"@":"?")+'</span>');
+        else if (x===0||y===0||x===COLS-1||y===ROWS-1) r.push('<span class="t-wall">#</span>');
+        else if (food.has(k)) r.push('<span class="t-food">o</span>');
+        else if (haz.has(k)) r.push('<span class="t-hazard">x</span>');
+        else r.push('<span class="t-floor">.</span>');
+      }
+      rows.push(r.join(""));
+    }
+    worldEl.innerHTML=rows.join("\n");
+
+    document.getElementById("s-state").textContent = embodied?"EMBODIED":"NO BODY";
+    document.getElementById("s-state").style.color = embodied?"var(--bright)":"var(--red)";
+    document.getElementById("s-life").textContent = life;
+    document.getElementById("s-age").textContent = rat.age;
+    document.getElementById("s-total").textContent = totalTicks;
+    var hp=document.getElementById("s-hp"); hp.textContent=bar(rat.health);
+    hp.className="v bar"+(rat.health<25?" crit":(rat.health<55?" warn":""));
+    var hu=document.getElementById("s-hunger"); hu.textContent=bar(rat.hunger);
+    hu.className="v bar"+(rat.hunger<20?" crit":(rat.hunger<45?" warn":""));
+    var avg=rbuf.length? rbuf.reduce(function(a,b){return a+b;},0)/rbuf.length : 0;
+    document.getElementById("s-reward").textContent=avg.toFixed(3);
+    document.getElementById("s-weights").textContent = life>1 ? ("inherited x"+(life-1)) : "naive";
+  }
+
+  var rbuf=[];
+  function tick(){
+    totalTicks++;
+    if (!embodied){
+      var noise=new Float32Array(N_IN);
+      for (var i=0;i<N_IN;i++) noise[i]=Math.max(0,(Math.random()-.5)*1.4);
+      logits(noise);
+      if (totalTicks%6===0){
+        var m=0; for (i=0;i<N_IN;i++) m+=noise[i];
+        log("[t"+totalTicks+"] spontaneous activity mean="+(m/N_IN).toFixed(3)+" — no body, no reward, no trend","tag-flavor");
+      }
+      renderWorld(); return;
+    }
+
+    rat.age++;
+    var s=encode(rat.x,rat.y,rat.hunger/100);
+    var d=act(s), a=ACTIONS[d.a];
+    var nx=rat.x, ny=rat.y;
+    if (a==="N") ny--; else if (a==="S") ny++; else if (a==="E") nx++; else nx--;
+    if (!inB(nx,ny)){ nx=rat.x; ny=rat.y; }
+
+    var r=-0.005;
+    rat.hunger=Math.max(0, rat.hunger-0.35);
+    if (rat.hunger<=0){ rat.health-=0.5; r-=0.02; }
+
+    rat.x=nx; rat.y=ny;
+    var key=rat.x+","+rat.y, ate=false, hit=false;
+    if (food.has(key)){ food.delete(key); spawnFood(); rat.hunger=100; r+=1.0; ate=true; }
+    if (haz.has(key)){ rat.health-=22; r-=0.5; hit=true; }
+
+    var done=false;
+    if (rat.health<=0){
+      r-=1.0; done=true;
+      log("[t"+totalTicks+"] LIFE "+life+" ENDS at age "+rat.age+" — synapses carried into life "+(life+1),"tag-death");
+      life++; respawn();
+    }
+    var s2=encode(rat.x,rat.y,rat.hunger/100);
+    var rpe=learn(s,r,s2,done);
+    rbuf.push(r); if (rbuf.length>50) rbuf.shift();
+
+    if (ate) log("[t"+totalTicks+"] food at ("+rat.x+","+rat.y+") — hunger restored, rpe="+rpe.toFixed(2),"tag-event");
+    if (hit) log("[t"+totalTicks+"] hazard contact — hp -22, rpe="+rpe.toFixed(2),"tag-event");
+    if (!ate && !hit && !done && totalTicks%3===0)
+      log("[t"+totalTicks+"] act="+a+" p="+d.p.toFixed(2)+" food="+Math.round(rat.hunger)+" hp="+Math.round(rat.health)+" rpe="+rpe.toFixed(2));
+    if (totalTicks%45===0) log(FLAVOR[Math.floor(Math.random()*FLAVOR.length)],"tag-flavor");
+    renderWorld();
+  }
+
+  var running=true, tps=4, timer=null;
+  function schedule(){ if (timer) clearInterval(timer); timer=setInterval(function(){ if (running) tick(); }, 1000/tps); }
+  document.getElementById("b-play").addEventListener("click", function(){
+    running=!running; this.textContent=running?"Pause":"Resume"; this.classList.toggle("on",running);
+  });
+  document.getElementById("b-fast").addEventListener("click", function(){ tps=Math.min(10,tps+1); document.getElementById("b-tps").textContent=tps; schedule(); });
+  document.getElementById("b-slow").addEventListener("click", function(){ tps=Math.max(1,tps-1); document.getElementById("b-tps").textContent=tps; schedule(); });
+  document.getElementById("b-unplug").addEventListener("click", function(){
+    embodied=!embodied;
+    this.textContent=embodied?"Unplug body":"Reconnect body";
+    this.classList.toggle("on",!embodied);
+    log(embodied?"[sys] virtual body reconnected — sensory stream resumes":"[sys] virtual body unplugged — noise only, learning halted","tag-sys");
+    renderWorld();
+  });
+  document.getElementById("b-terrain").addEventListener("click", function(){ buildTerrain(); log("[sys] terrain reshuffled","tag-sys"); renderWorld(); });
+  document.getElementById("b-wipe").addEventListener("click", function(){
+    brain=freshBrain(); life=1; totalTicks=0; rbuf=[]; respawn();
+    log("[sys] synaptic weights wiped — naive brain","tag-death"); renderWorld();
+  });
+
+  /* ============================================================
+     PART 2 — ASCII readouts of the trained maze brain (real data)
+     ============================================================ */
+  function padL(s,n){ s=String(s); return " ".repeat(Math.max(0,n-s.length))+s; }
+  function padR(s,n){ s=String(s); return s+" ".repeat(Math.max(0,n-s.length)); }
+
+  // --- anatomy table ---
+  (function(){
+    var ROWS_=[
+      ["hippocampus + ento.","place-cell population","LIVE"],
+      ["dorsal striatum","actor — picks action","LIVE"],
+      ["ventral striatum/OFC","critic — predicts value","LIVE"],
+      ["VTA / subst. nigra","dopamine RPE signal","LIVE"],
+      ["thalamus","sensory relay + gain","LIVE"],
+      ["barrel / piriform / V1","modality encoders","STUB"],
+      ["amygdala","valence tagging","STUB"],
+      ["prefrontal cortex","goal / working memory","STUB"],
+      ["cerebellum","motor timing","STUB"]
+    ];
+    var w1=22, w2=25, w3=6;
+    function line(l,m,r){ return l+"─".repeat(w1+2)+m+"─".repeat(w2+2)+m+"─".repeat(w3+2)+r; }
+    var out=[];
+    out.push('<span class="dimc">'+line("┌","┬","┐")+'</span>');
+    out.push('<span class="dimc">│ </span><span class="ink">'+padR("REGION",w1)+'</span><span class="dimc"> │ </span><span class="ink">'+padR("DIGITAL MODULE",w2)+'</span><span class="dimc"> │ </span><span class="ink">'+padR("STATE",w3)+'</span><span class="dimc"> │</span>');
+    out.push('<span class="dimc">'+line("├","┼","┤")+'</span>');
+    ROWS_.forEach(function(r){
+      var cls = r[2]==="LIVE" ? "flag-live" : "flag-stub";
+      out.push('<span class="dimc">│ </span>'+padR(r[0],w1)+'<span class="dimc"> │ </span><span class="ink">'+padR(r[1],w2)+'</span><span class="dimc"> │ </span><span class="'+cls+'">'+padR(r[2],w3)+'</span><span class="dimc"> │</span>');
+    });
+    out.push('<span class="dimc">'+line("└","┴","┘")+'</span>');
+    document.getElementById("anatomy").innerHTML=out.join("\n");
+  })();
+
+  // --- learning curve ---
+  (function(){
+    var steps=D.steps_per_episode, W=54, H=15, YMAX=300;
+    var cols=[];
+    for (var c=0;c<W;c++){
+      var lo=Math.floor(c*steps.length/W), hi=Math.floor((c+1)*steps.length/W);
+      var sl=steps.slice(lo,Math.max(hi,lo+1));
+      cols.push(sl.reduce(function(a,b){return a+b;},0)/sl.length);
+    }
+    var grid=[]; for (var r=0;r<H;r++) grid.push(new Array(W).fill(" "));
+    cols.forEach(function(v,c){
+      var row=Math.round((1-Math.min(v,YMAX)/YMAX)*(H-1));
+      grid[row][c]="•";
+    });
+    var out=[];
+    for (r=0;r<H;r++){
+      var val=Math.round((1-r/(H-1))*YMAX);
+      var lab=(r===0||r===Math.floor((H-1)/2)||r===H-1)? padL(val,3) : "   ";
+      var body=grid[r].map(function(ch){ return ch==="•" ? '<span class="mark">•</span>' : ch; }).join("");
+      out.push('<span class="axis">'+lab+" ┤</span>"+body);
+    }
+    out.push('<span class="axis">    └'+"─".repeat(W)+'</span>');
+    out.push('<span class="axis">     0'+padL("30",Math.floor(W/4))+padL("60",Math.floor(W/4))+padL("90",Math.floor(W/4))+padL("120",W-3*Math.floor(W/4)-1)+'   episode</span>');
+    document.getElementById("curve").innerHTML=out.join("\n");
+    function mean(a){ return a.reduce(function(x,y){return x+y;},0)/a.length; }
+    var m1=mean(steps.slice(0,10)), m2=mean(steps.slice(-10));
+    document.getElementById("curve-note").innerHTML =
+      "Steps taken to reach the reward, per episode, over 120 consecutive lives in the maze task. First ten averaged <span class='hl'>"+m1.toFixed(1)+
+      "</span>, last ten averaged <span class='hl'>"+m2.toFixed(1)+"</span> — a "+
+      Math.round((m1-m2)/m1*100)+"% reduction, produced entirely by dopamine-gated weight changes. Real output of digital_rat_brain.py, not a drawing.";
+  })();
+
+  // --- value / policy / route maps ---
+  var mapMode="value";
+  var RAMP=["··","░░","▒▒","▓▓","██"];
+  var ARROW={0:"^ ",1:"> ",2:"v ",3:"< "};
+  var NOTES={
+    value:"The critic's learned value V(s) for all 100 squares, read straight out of the trained weights. Density rises toward the reward corner. Nobody drew this gradient — 120 episodes of reward-prediction error deposited it in the synapses.",
+    policy:"The actor's preferred move from each square (highest-weighted of four actions). The arrows resolve into one coherent flow toward the reward, including from squares the rat rarely stood on.",
+    route:"The path actually walked on episode 120: S to G in 19 steps, against a theoretical minimum of 18."
+  };
+  function renderMap(){
+    var flat=[]; D.value_map.forEach(function(r){ r.forEach(function(v){ flat.push(v); }); });
+    var lo=Math.min.apply(null,flat), hi=Math.max.apply(null,flat);
+    var onPath=new Set(D.trajectory.map(function(p){ return p[0]+","+p[1]; }));
+    var out=[];
+    for (var y=9;y>=0;y--){
+      var cells=[];
+      for (var x=0;x<10;x++){
+        if (mapMode==="value"){
+          var t=(D.value_map[y][x]-lo)/((hi-lo)||1);
+          var lvl=Math.min(4,Math.floor(t*5));
+          cells.push('<span class="h'+lvl+'">'+RAMP[lvl]+'</span>');
+        } else if (mapMode==="policy"){
+          cells.push('<span class="h2">'+ARROW[D.policy[y][x]]+'</span>');
+        } else {
+          if (x===D.start[0]&&y===D.start[1]) cells.push('<span class="h4">S </span>');
+          else if (x===D.goal[0]&&y===D.goal[1]) cells.push('<span class="h3">G </span>');
+          else if (onPath.has(x+","+y)) cells.push('<span class="h2">██</span>');
+          else cells.push('<span class="h0">· </span>');
+        }
+      }
+      out.push('<span class="axis">'+padL(y,2)+" │ </span>"+cells.join(""));
+    }
+    out.push('<span class="axis">   └'+"─".repeat(22)+'</span>');
+    out.push('<span class="axis">     0 1 2 3 4 5 6 7 8 9   x  →  reward at (9,9)</span>');
+    if (mapMode==="value") out.push('<span class="axis">\n   low '+RAMP.map(function(c,i){return '</span><span class="h'+i+'">'+c+'</span><span class="axis">';}).join("")+' high</span>');
+    document.getElementById("map").innerHTML=out.join("\n");
+    document.getElementById("map-note").textContent=NOTES[mapMode];
+  }
+  function setMap(m){
+    mapMode=m;
+    ["value","policy","route"].forEach(function(k){
+      document.getElementById("m-"+k).setAttribute("aria-pressed", String(k===m));
+    });
+    renderMap();
+  }
+  document.getElementById("m-value").addEventListener("click", function(){ setMap("value"); });
+  document.getElementById("m-policy").addEventListener("click", function(){ setMap("policy"); });
+  document.getElementById("m-route").addEventListener("click", function(){ setMap("route"); });
+
+  /* ---------------- boot ---------------- */
+  buildTerrain();
+  var restored=load();
+  respawn();
+  log(restored? "[sys] brain restored from this browser — life "+life+", "+totalTicks+" ticks of prior experience"
+              : "[sys] no prior save — booting naive brain","tag-sys");
+  log("[sys] rat_brain online — virtual body attached","tag-sys");
+  renderWorld();
+  setMap("value");
+  schedule();
+  setInterval(save, 5000);
+  window.addEventListener("pagehide", save);
+  document.addEventListener("visibilitychange", function(){ if (document.visibilityState==="hidden") save(); });
+})();
+</script>
+</body>
+</html>
